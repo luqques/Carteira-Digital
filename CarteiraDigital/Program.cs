@@ -7,8 +7,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("\nBem vindo à sua Carteira Digital!");
-        Console.WriteLine("\nCadastre seus dados!");
+        Menu.BoasVindas();
+        Menu.MenuPrincipal();
 
         Pessoa cliente1 = new Pessoa();
        

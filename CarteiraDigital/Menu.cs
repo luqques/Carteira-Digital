@@ -8,6 +8,10 @@ namespace Carteira
 {
     public class Menu
     {
+        public static void BoasVindas()
+        {
+            Console.WriteLine("\nBem vindo à sua Carteira Digital!");
+        }
         public static string MenuPrincipal()
         {
             Console.WriteLine("1. Carteira");
