@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Carteira
 {
-    internal class Conta
+    public class Conta
     {
         public string Numero { get; set; }
         public string Agencia { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Carteira
 {
-    internal class Menu
+    public class Menu
     {
         public static string MenuPrincipal()
         {

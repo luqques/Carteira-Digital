@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Carteira
 {
-    internal class Endereco
+    public class Endereco
     {
         public string Cep { get; set; }
         public string Rua { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Carteira
 {
-    internal class Investimento
+    public class Investimento
     {
         public string tipoInvestimento;
     }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Carteira
 {
-    internal class Pagamento
+    public class Pagamento
     {
         public string Recebedor { get; set; }
         private string nomeMetodoPagamento;        

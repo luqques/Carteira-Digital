@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Carteira
 {
-    internal class Empresa:Cliente
+    public class Empresa:Cliente
     {
         private string cnpj;
         private string razaoSocial;
