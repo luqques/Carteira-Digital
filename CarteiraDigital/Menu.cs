@@ -13,5 +13,15 @@ namespace Carteira
             Console.WriteLine("1. Carteira");
             return Console.ReadLine();
         }
+
+        public static string MenuCarteira()
+        {
+            Console.WriteLine("1. Cadastro");
+            Console.WriteLine("2. Saldo");
+            Console.WriteLine("3. Investimentos");
+            Console.WriteLine("4. Pagamentos");
+
+            return Console.ReadLine();
+        }
     }
 }
