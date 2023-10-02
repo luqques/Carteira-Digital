@@ -27,5 +27,32 @@ namespace Carteira
 
             return Console.ReadLine();
         }
+
+        public static void MenuCadastro()
+        {
+            Console.WriteLine("Já possui um cadastro? s/n");
+            if (Console.ReadLine().ToLower().Equals("s"))
+            {
+                PossuiCadastro();
+            }
+            else if (Console.ReadLine().ToLower().Equals("n"))
+            {
+                NaoPossuiCadastro();
+            }
+            else
+            {
+                throw new Exception("Resposta inválida.");
+            }
+        }
+
+        private static void NaoPossuiCadastro()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void PossuiCadastro()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

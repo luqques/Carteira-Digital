@@ -7,29 +7,40 @@ class Program
 {
     static void Main(string[] args)
     {
-        Menu.BoasVindas();
-        Menu.MenuPrincipal();
+        try
+        {
+            Menu.BoasVindas();
+            Menu.MenuPrincipal();
 
-        Pessoa cliente1 = new Pessoa();
-       
-        Console.Write($"\nDocumento (CPF/CNPJ): ");
-        cliente1.Documento = Console.ReadLine();
+            Pessoa cliente1 = new Pessoa();
 
-        Console.Write($"\nNome: ");
-        cliente1.Nome = Console.ReadLine();
-        
-        Console.Write($"\nIdade: ");
-        cliente1.Idade = Convert.ToInt32(Console.ReadLine());
+            Console.Write($"\nDocumento (CPF/CNPJ): ");
+            cliente1.Documento = Console.ReadLine();
 
-        Console.WriteLine(cliente1.Nome);
-        Console.WriteLine(cliente1.Idade);
-        Console.WriteLine(cliente1.Documento);
+            Console.Write($"\nNome: ");
+            cliente1.Nome = Console.ReadLine();
 
-        Pagamento pagamento = new Pagamento();
+            Console.Write($"\nIdade: ");
+            cliente1.Idade = Convert.ToInt32(Console.ReadLine());
 
-        Console.WriteLine("Qual o nome do recebedor do pagamento?");
-        pagamento.Recebedor = Console.ReadLine();
+            Console.WriteLine(cliente1.Nome);
+            Console.WriteLine(cliente1.Idade);
+            Console.WriteLine(cliente1.Documento);
 
-        pagamento.MostrarMetodoPagamento();
+            Pagamento pagamento = new Pagamento();
+
+            Console.WriteLine("Qual o nome do recebedor do pagamento?");
+            pagamento.Recebedor = Console.ReadLine();
+
+            pagamento.MostrarMetodoPagamento();
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Formato de caractere inválido!");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Erro inesperado: " + ex);
+        }
     }
 }
