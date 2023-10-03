@@ -10,7 +10,7 @@ class Program
         try
         {
             Menu.BoasVindas();
-            Menu.MenuPrincipal();
+            Menu.MenuCarteira(Menu.MenuPrincipal());
 
             Pessoa cliente1 = new Pessoa();
 

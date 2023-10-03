@@ -12,23 +12,30 @@ namespace Carteira
         {
             Console.WriteLine("\nBem vindo à sua Carteira Digital!");
         }
-        public static string MenuPrincipal()
+        public static int MenuPrincipal()
         {
             Console.WriteLine("1. Carteira");
-            return Console.ReadLine();
+            return Convert.ToInt32(Console.ReadLine());
         }
 
-        public static string MenuCarteira()
+        public static string MenuCarteira(int opcao)
         {
-            Console.WriteLine("1. Cadastro");
-            Console.WriteLine("2. Saldo");
-            Console.WriteLine("3. Investimentos");
-            Console.WriteLine("4. Pagamentos");
+            if (opcao == 1)
+            {
+                Console.WriteLine("1. Cadastro");
+                Console.WriteLine("2. Saldo");
+                Console.WriteLine("3. Investimentos");
+                Console.WriteLine("4. Pagamentos");
 
-            return Console.ReadLine();
+                return Console.ReadLine();
+            }
+            else
+            {
+                throw new Exception("Opção inválida.");
+            }
         }
 
-        public static void MenuCadastro()
+        public static string MenuCadastroConta()
         {
             Console.WriteLine("Já possui um cadastro? s/n");
             if (Console.ReadLine().ToLower().Equals("s"))
