@@ -35,31 +35,22 @@ namespace Carteira
             }
         }
 
-        public static string MenuCadastroConta()
+        public static bool MenuCadastroConta()
         {
             Console.WriteLine("Já possui um cadastro? s/n");
+            bool posssuiCadastro;
             if (Console.ReadLine().ToLower().Equals("s"))
             {
-                PossuiCadastro();
+                return posssuiCadastro = true;
             }
             else if (Console.ReadLine().ToLower().Equals("n"))
             {
-                NaoPossuiCadastro();
+                return posssuiCadastro = false;
             }
             else
             {
                 throw new Exception("Resposta inválida.");
             }
-        }
-
-        private static void NaoPossuiCadastro()
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void PossuiCadastro()
-        {
-            throw new NotImplementedException();
         }
     }
 }
