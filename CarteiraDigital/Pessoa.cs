@@ -10,9 +10,9 @@ namespace Carteira
 {
     public class Pessoa:Cliente
     {       
-        private string cpf;
-        private int idade;
-        private bool maiorDeIdade;
+        private string cpf { get; set; }
+        private int idade { get; set; }
+        private bool maiorDeIdade { get; set; }
 
         public Pessoa()
         {
@@ -36,5 +36,8 @@ namespace Carteira
             }
         }
 
+        public static void CadastroPessoa()
+        {
+        }
     }
 }

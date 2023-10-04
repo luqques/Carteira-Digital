@@ -8,18 +8,25 @@ namespace Carteira
 {
     public class Conta
     {
-        public static void CadastroConta()
-        {
+        public string Numero { get; set; }
+        public string Agencia { get; set; }
+        public string Banco { get; set; }
+        public Pessoa Pessoa { get; set; }
+
+        public void CadastroConta(Pessoa pessoa)
+        {            
             Console.WriteLine("Cadastre sua conta na Carteira Digital:");
 
             Console.Write("Digite o número da Conta: ");
-            string numero = Console.ReadLine();
+            Numero = Console.ReadLine();
 
             Console.Write("Digite o número da Agência: ");
-            int agencia = Convert.ToInt32(Console.ReadLine());
+            Agencia = Console.ReadLine();
 
             Console.Write("Digite o número do Banco: ");
-            int banco = Convert.ToInt32(Console.ReadLine());
+            Banco = Console.ReadLine();
+
+            Pessoa = pessoa;
         }
     }
 }
