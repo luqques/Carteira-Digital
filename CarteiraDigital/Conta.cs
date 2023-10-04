@@ -8,10 +8,19 @@ namespace Carteira
 {
     public class Conta
     {
-        public string Numero { get; set; }
+        private string Numero { get; set; }
         public string Agencia { get; set; }
         public string Banco { get; set; }
         
         private Carteira.Cliente cliente;
+
+        
+
+        public static void CadastroConta()
+        {
+            Console.WriteLine("Cadastre sua conta:");
+
+            Console.Write("Digite o número da conta: ");            
+        }
     }
 }
