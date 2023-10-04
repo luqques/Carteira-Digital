@@ -10,9 +10,7 @@ class Program
         try
         {
             Menu.BoasVindas();
-            Menu.MenuPrincipal();
-
-            Pessoa cliente1 = new Pessoa();
+            Menu.MenuPrincipal();            
         }
         catch (FormatException)
         {
