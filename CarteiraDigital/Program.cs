@@ -10,7 +10,7 @@ class Program
         try
         {
             Menu.BoasVindas();
-            Menu.MenuPrincipal();            
+            Menu.MenuPrincipal();
         }
         catch (FormatException)
         {

@@ -16,14 +16,14 @@ namespace Carteira
         public Empresa()
         {
             Console.Clear();
-            CnpjEmpresa();
             RazaoSocialEmpresa();
+            CnpjEmpresa();
+            MostrarEmpresa();
         }
 
         private void CnpjEmpresa()
         {
-            Console.Write("Digtie o CNPJ da empresa: ");
-            Cnpj = Console.ReadLine();
+            Cnpj = Documento;
         }
 
         private void RazaoSocialEmpresa()
@@ -37,6 +37,9 @@ namespace Carteira
             Console.WriteLine("\nDados da Empresa Cliente cadastrada:");
             Console.WriteLine($"Razão Social: {RazaoSocial}");
             Console.WriteLine($"CNPJ: {Cnpj}");
+
+            Console.Clear();
+            Menu.MenuPrincipal();
         }
     }
 }

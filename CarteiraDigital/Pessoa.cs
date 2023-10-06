@@ -23,18 +23,18 @@ namespace Carteira
         
         private int Idade
         {
-            get { return this.idade; }
+            get { return idade; }
             set
             {
-                if (this.idade >= 18)
+                if (idade >= 18)
                 {
-                    this.MaiorDeIdade = true;
+                    MaiorDeIdade = true;
                 }
                 else
                 {
-                    this.MaiorDeIdade = false;
+                    MaiorDeIdade = false;
                 }
-                this.idade = value;
+                idade = value;
             }
         }
 
@@ -48,13 +48,12 @@ namespace Carteira
         private void CadastroPessoa()
         {
             Console.Write("Digite seu nome: ");
-            this.Nome = Console.ReadLine();
+            Nome = Console.ReadLine();
 
             Console.Write("Digite sua idade: ");
-            this.Idade = Convert.ToInt32(Console.ReadLine());
+            Idade = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("Digite seu CPF: ");
-            this.Cpf = Documento;
+            Cpf = Documento;
         }
 
         public void MostrarPessoa()
@@ -68,6 +67,7 @@ namespace Carteira
             Console.WriteLine("Aperte qualquer tecla para prosseguir.");
             Console.ReadKey();
 
+            Console.Clear();
             Menu.MenuPrincipal();
         }
     }
