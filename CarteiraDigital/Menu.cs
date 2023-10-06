@@ -20,6 +20,7 @@ namespace Carteira
 
         public static void MenuCarteira(int opcao)
         {
+            Console.Clear();
             if (opcao == 1)
             {                
                 Console.WriteLine("1. Cadastro");
@@ -31,13 +32,12 @@ namespace Carteira
                 {
                     case 1:
                         Pessoa pessoa1 = new Pessoa();
-                        pessoa1.CadastroPessoa();
                         break;
                     case 2:
                         //TODO: chamada de Saldo
                         break;
                     case 3:
-                        //TODO: chamada de Investimentos
+                        Investimento investimento1 = new Investimento();
                         break;
                     case 4:
                         Pagamento pagamento1 = new Pagamento();

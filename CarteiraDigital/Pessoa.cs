@@ -10,36 +10,42 @@ namespace Carteira
 {
     public class Pessoa:Cliente
     {       
-        private string cpf { get; set; }
-        private int idade { get; set; }
-        private bool maiorDeIdade { get; set; }
+        private string Cpf { get; set; }
+        private bool MaiorDeIdade { get; set; }
 
-        public Pessoa()
+        private int Idade
         {
-            this.cpf = Documento;
-        }
-
-        public int Idade
-        {
-            get { return idade; }
+            get { return this.Idade; }
             set
             {
-                if (idade >= 18)
+                if (Idade >= 18)
                 {
-                    maiorDeIdade = true;
+                    this.MaiorDeIdade = true;
                 }
                 else
                 {
-                    maiorDeIdade = false;
+                    this.MaiorDeIdade = false;
                 }
-                idade = value;
+                this.Idade = value;
             }
         }
 
-        public void CadastroPessoa()
+        public Pessoa()
+        {
+            CadastroPessoa();
+            this.Cpf = Documento;
+        }
+
+        private void CadastroPessoa()
         {
             Console.Write("Digite seu nome: ");
-            Nome = Console.ReadLine();
+            this.Nome = Console.ReadLine();
+
+            Console.Write("Digite sua idade: ");
+            this.Idade = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Digite seu CPF: ");
+            this.Cpf = Console.ReadLine();
         }
     }
 }

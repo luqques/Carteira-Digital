@@ -10,22 +10,42 @@ namespace Carteira
 {
     public class Pagamento
     {
-        public string Recebedor { get; set; }
-        private string nomeMetodoPagamento;        
-        public Pagamento()
-        {            
-            switch (this.EscolherMetodoPagamento())
+        private string Recebedor { get; set; }
+        private string NomeMetodoPagamento {get; set; }
+        private double Valor
+        {
+            get { return Valor; }
+            set
             {
-                case 1: nomeMetodoPagamento = "Dinheiro"; break;
-                case 2: nomeMetodoPagamento = "Débito"; break;
-                case 3: nomeMetodoPagamento = "Crédito"; break;
-                case 4: nomeMetodoPagamento = "Pix"; break;
-                case 5: nomeMetodoPagamento = "Boleto"; break;
-                default: nomeMetodoPagamento = "Desconhecido"; break;
+                if (Valor > 1000)
+                {
+                    Console.WriteLine("Valor acima do limite de pagamento desta conta!");
+                }
+                else
+                {
+                    Valor = value;
+                }
             }
-        }        
+        }
 
-        public int EscolherMetodoPagamento()
+        public Pagamento()
+        {
+            switch (EscolherMetodoPagamento())
+            {
+                case 1: NomeMetodoPagamento = "Dinheiro"; break;
+                case 2: NomeMetodoPagamento = "Débito"; break;
+                case 3: NomeMetodoPagamento = "Crédito"; break;
+                case 4: NomeMetodoPagamento = "Pix"; break;
+                case 5: NomeMetodoPagamento = "Boleto"; break;
+                default: NomeMetodoPagamento = "Desconhecido"; break;
+            }
+            Console.WriteLine($"Método de pagamento escolhido: {NomeMetodoPagamento}");
+
+            ValorPagamento();
+            RecebedorPagamento();
+        }
+
+        private int EscolherMetodoPagamento()
         {
             Console.WriteLine("Escolha o método de pagamento:");
             List<string> listaMetodosPagamentos = new List<string>() { "1. Dinheiro", "2. Débito", "3. Crédito", "4. Pix", "5. Boleto" };
@@ -36,15 +56,16 @@ namespace Carteira
             return codigoMetodoPagamento;
         }
 
-        public void MostrarMetodoPagamento()
+        private void ValorPagamento()
         {
-            Console.WriteLine(this.nomeMetodoPagamento);
+            Console.WriteLine("Qual o valor do pagamento?");
+            Valor = Convert.ToDouble(Console.ReadLine());
         }
 
-        internal static void Menu()
+        private void RecebedorPagamento()
         {
-            Console.WriteLine("Escolha o método de pagamento desejável:");
-
+            Console.WriteLine("Qual o nome do recebedor do pagamento?");
+            Recebedor = Console.ReadLine();
         }
     }
 }
