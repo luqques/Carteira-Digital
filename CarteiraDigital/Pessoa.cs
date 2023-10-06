@@ -10,10 +10,17 @@ using System.Threading.Tasks;
 namespace Carteira
 {
     public class Pessoa:Cliente
-    {       
+    {
+        private char tipoPessoa;
+        
+        private string Nome { get; set; }
+
         private string Cpf { get; set; }
+
         private bool MaiorDeIdade { get; set; }
+        
         private int idade;
+        
         private int Idade
         {
             get { return this.idade; }
@@ -34,8 +41,6 @@ namespace Carteira
         public Pessoa()
         {
             CadastroPessoa();
-            this.Cpf = Documento;
-
             MostrarPessoa();
         }
 
@@ -48,7 +53,7 @@ namespace Carteira
             this.Idade = Convert.ToInt32(Console.ReadLine());
 
             Console.Write("Digite seu CPF: ");
-            this.Cpf = Console.ReadLine();
+            this.Cpf = Documento;
         }
 
         public void MostrarPessoa()

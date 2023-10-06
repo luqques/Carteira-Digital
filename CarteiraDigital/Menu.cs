@@ -32,7 +32,7 @@ namespace Carteira
                 switch (Convert.ToInt32(Console.ReadLine()))
                 {
                     case 1:
-                        Pessoa pessoa1 = new Pessoa();
+                        Cliente cliente1 = new Cliente();
                         break;
                     case 2:
                         //TODO: chamada de Saldo

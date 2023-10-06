@@ -3,8 +3,7 @@
     public class Cliente
     {
         private string documento;
-        private char tipoPessoa;
-        public string Nome { get; set; }
+        private char tipoCliente;
 
         public string Documento
         {
@@ -14,11 +13,11 @@
                 documento = value;
                 if (documento.Length == 14)
                 {
-                    tipoPessoa = 'J';
+                    tipoCliente = 'J';
                 }
                 else if (documento.Length == 11)
                 {
-                    tipoPessoa = 'F';
+                    tipoCliente = 'F';
                 }
                 else
                 {
@@ -31,6 +30,15 @@
         {
             Console.Write("Digite o número identificador do seu documento: ");
             Documento = Console.ReadLine();
+
+            if (tipoCliente == 'J')
+            {
+                Empresa empresa1 = new Empresa();
+            }
+            else if (tipoCliente == 'F')
+            {
+                Pessoa pessoa1 = new Pessoa();
+            }
         }
     }
 }
