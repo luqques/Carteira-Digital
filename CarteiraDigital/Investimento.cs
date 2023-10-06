@@ -14,6 +14,7 @@ namespace Carteira
         
         public Investimento()
         {
+            Console.Clear();
             TipoInvestimento();
             ValorInvestimento();
             MesesInvestimento();

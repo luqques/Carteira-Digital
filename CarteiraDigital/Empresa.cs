@@ -15,6 +15,7 @@ namespace Carteira
 
         public Empresa()
         {
+            Console.Clear();
             CnpjEmpresa();
             RazaoSocialEmpresa();
         }

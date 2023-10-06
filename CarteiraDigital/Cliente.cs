@@ -28,6 +28,7 @@
         
         public Cliente()
         {
+            Console.Clear();
             Console.Write("Digite o número identificador do seu documento: ");
             Documento = Console.ReadLine();
 

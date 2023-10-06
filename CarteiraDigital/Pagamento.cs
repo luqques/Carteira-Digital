@@ -31,6 +31,7 @@ namespace Carteira
 
         public Pagamento()
         {
+            Console.Clear();
             switch (EscolherMetodoPagamento())
             {
                 case 1: NomeMetodoPagamento = "Dinheiro"; break;

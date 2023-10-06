@@ -40,6 +40,7 @@ namespace Carteira
 
         public Pessoa()
         {
+            Console.Clear();
             CadastroPessoa();
             MostrarPessoa();
         }
