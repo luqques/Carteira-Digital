@@ -8,6 +8,8 @@ namespace Carteira
 {
     public class Investimento
     {
-        public string tipoInvestimento;
+        public string tipoInvestimento { get; set; }
+        public double valorInvestimento { get; set; }
+        
     }
 }
