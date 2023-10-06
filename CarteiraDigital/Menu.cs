@@ -30,7 +30,8 @@ namespace Carteira
                 switch (Convert.ToInt32(Console.ReadLine()))
                 {
                     case 1:
-                        Pessoa.CadastroPessoa();
+                        Pessoa pessoa1 = new Pessoa();
+                        pessoa1.CadastroPessoa();
                         break;
                     case 2:
                         //TODO: chamada de Saldo
@@ -39,7 +40,7 @@ namespace Carteira
                         //TODO: chamada de Investimentos
                         break;
                     case 4:
-                        //TODO: chamada de Pagamentos
+                        Pagamento pagamento1 = new Pagamento();
                         break;
                     default:
                         throw new Exception("Opção inválida.");

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\luque\\Source\\Repos\\luqques\\Carteira-Digital\\CarteiraDigital\\Carteira.csproj": {}
+    "D:\\Entra21\\Projetos\\POO\\Carteira-Digital\\CarteiraDigital\\Carteira.csproj": {}
   },
   "projects": {
-    "C:\\Users\\luque\\Source\\Repos\\luqques\\Carteira-Digital\\CarteiraDigital\\Carteira.csproj": {
+    "D:\\Entra21\\Projetos\\POO\\Carteira-Digital\\CarteiraDigital\\Carteira.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\luque\\Source\\Repos\\luqques\\Carteira-Digital\\CarteiraDigital\\Carteira.csproj",
+        "projectUniqueName": "D:\\Entra21\\Projetos\\POO\\Carteira-Digital\\CarteiraDigital\\Carteira.csproj",
         "projectName": "Carteira",
-        "projectPath": "C:\\Users\\luque\\Source\\Repos\\luqques\\Carteira-Digital\\CarteiraDigital\\Carteira.csproj",
+        "projectPath": "D:\\Entra21\\Projetos\\POO\\Carteira-Digital\\CarteiraDigital\\Carteira.csproj",
         "packagesPath": "C:\\Users\\luque\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\luque\\Source\\Repos\\luqques\\Carteira-Digital\\CarteiraDigital\\obj\\",
+        "outputPath": "D:\\Entra21\\Projetos\\POO\\Carteira-Digital\\CarteiraDigital\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

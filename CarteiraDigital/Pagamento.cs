@@ -40,5 +40,11 @@ namespace Carteira
         {
             Console.WriteLine(this.nomeMetodoPagamento);
         }
+
+        internal static void Menu()
+        {
+            Console.WriteLine("Escolha o método de pagamento desejável:");
+
+        }
     }
 }

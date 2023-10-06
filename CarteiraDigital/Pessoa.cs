@@ -36,8 +36,10 @@ namespace Carteira
             }
         }
 
-        public static void CadastroPessoa()
+        public void CadastroPessoa()
         {
+            Console.Write("Digite seu nome: ");
+            Nome = Console.ReadLine();
         }
     }
 }
