@@ -12,18 +12,19 @@ namespace Carteira
     {
         private string Recebedor { get; set; }
         private string NomeMetodoPagamento {get; set; }
+        private double valor;
         private double Valor
         {
-            get { return Valor; }
+            get { return valor; }
             set
             {
-                if (Valor > 1000)
+                if (valor > 1000)
                 {
                     Console.WriteLine("Valor acima do limite de pagamento desta conta!");
                 }
                 else
                 {
-                    Valor = value;
+                    valor = value;
                 }
             }
         }

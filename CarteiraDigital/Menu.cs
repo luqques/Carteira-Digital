@@ -14,6 +14,7 @@ namespace Carteira
         }
         public static void MenuPrincipal()
         {
+            Console.Clear();
             Console.WriteLine("1. Carteira");
             MenuCarteira(Convert.ToInt32(Console.ReadLine()));
         }

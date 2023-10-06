@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Channels;
@@ -12,13 +13,13 @@ namespace Carteira
     {       
         private string Cpf { get; set; }
         private bool MaiorDeIdade { get; set; }
-
+        private int idade;
         private int Idade
         {
-            get { return this.Idade; }
+            get { return this.idade; }
             set
             {
-                if (Idade >= 18)
+                if (this.idade >= 18)
                 {
                     this.MaiorDeIdade = true;
                 }
@@ -26,7 +27,7 @@ namespace Carteira
                 {
                     this.MaiorDeIdade = false;
                 }
-                this.Idade = value;
+                this.idade = value;
             }
         }
 
@@ -34,6 +35,8 @@ namespace Carteira
         {
             CadastroPessoa();
             this.Cpf = Documento;
+
+            MostrarPessoa();
         }
 
         private void CadastroPessoa()
@@ -46,6 +49,20 @@ namespace Carteira
 
             Console.Write("Digite seu CPF: ");
             this.Cpf = Console.ReadLine();
+        }
+
+        public void MostrarPessoa()
+        {
+            Console.Clear();
+            Console.WriteLine("Dados da Pessoa");
+            Console.WriteLine($"Nome: {Nome}");
+            Console.WriteLine($"Idade: {Idade}");
+            Console.WriteLine($"CPF: {Cpf}");
+
+            Console.WriteLine("Aperte qualquer tecla para prosseguir.");
+            Console.ReadKey();
+
+            Menu.MenuPrincipal();
         }
     }
 }

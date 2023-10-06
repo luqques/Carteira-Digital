@@ -25,6 +25,12 @@
                     throw new ArgumentException("Documento inválido.");
                 }
             }
-        }        
+        }    
+        
+        public Cliente()
+        {
+            Console.Write("Digite o número identificador do seu documento: ");
+            Documento = Console.ReadLine();
+        }
     }
 }
