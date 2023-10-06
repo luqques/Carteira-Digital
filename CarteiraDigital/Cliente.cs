@@ -2,10 +2,10 @@
 {
     public class Cliente
     {
-        private string documento;
-        private char tipoCliente;
+        private static string documento;
+        private static char tipoCliente;
 
-        public string Documento
+        public static string Documento
         {
             get { return documento; }
             set
@@ -26,7 +26,7 @@
             }
         }    
         
-        public Cliente()
+        public static void DefinirTipoCliente()
         {
             Console.Clear();
             Console.Write("Digite o número identificador do seu documento: ");
