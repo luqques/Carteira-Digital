@@ -34,7 +34,7 @@ namespace Carteira
                         Cliente.DefinirTipoCliente();
                         break;
                     case 2:
-                        //TODO: chamada de Saldo
+                        Saldo.MostrarSaldo();
                         break;
                     case 3:
                         Investimento investimento1 = new Investimento();
