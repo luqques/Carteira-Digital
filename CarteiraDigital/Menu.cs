@@ -20,6 +20,7 @@ namespace Carteira
 
         public static void MenuCarteira(int opcao)
         {
+            Console.Clear();
             if (opcao == 1)
             {                
                 Console.WriteLine("1. Cadastro");
@@ -30,16 +31,16 @@ namespace Carteira
                 switch (Convert.ToInt32(Console.ReadLine()))
                 {
                     case 1:
-                        Pessoa.CadastroPessoa();
+                        Cliente.DefinirTipoCliente();
                         break;
                     case 2:
-                        //TODO: chamada de Saldo
+                        Saldo.MostrarSaldo();
                         break;
                     case 3:
-                        //TODO: chamada de Investimentos
+                        Investimento investimento1 = new Investimento();
                         break;
                     case 4:
-                        //TODO: chamada de Pagamentos
+                        Pagamento pagamento1 = new Pagamento();
                         break;
                     default:
                         throw new Exception("Opção inválida.");
