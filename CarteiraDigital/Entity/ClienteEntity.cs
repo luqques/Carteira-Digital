@@ -8,9 +8,9 @@ namespace Carteira.Entity
 {
     internal class ClienteEntity
     {
-        public int Id { get; set; }
-        public string Nome { get; set; }
-        public string Documento { get; set; }
-        public string Tipo { get; set; }
+        public int ID { get; set; }
+        public string NOME { get; set; }
+        public string DOCUMENTO { get; set; }
+        public string TIPO_DOCUMENTO { get; set; }
     }
 }
