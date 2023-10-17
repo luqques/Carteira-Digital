@@ -1,4 +1,4 @@
-﻿using Carteira;
+﻿using Carteira.Helpers;
 using Carteira.Model;
 using System.Security.Cryptography.X509Certificates;
 
@@ -10,13 +10,10 @@ class Program
     {
         try
         {
-            ClienteModel clienteModel = new ClienteModel();
+            //ClienteModel clienteModel = new ClienteModel();
 
-            clienteModel.Read();
+            //clienteModel.Read();
 
-            clienteModel.Create();
-
-            clienteModel.Read();
 
             Menu.BoasVindas();
             Menu.MenuPrincipal();

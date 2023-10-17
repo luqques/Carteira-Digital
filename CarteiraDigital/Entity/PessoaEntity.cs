@@ -1,26 +1,20 @@
-﻿using System;
+﻿using Carteira.Helpers;
+using Carteira.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Channels;
 using System.Threading.Tasks;
 
-namespace Carteira
+namespace Carteira.Entity
 {
-    public class Pessoa:Cliente
+    public class PessoaEntity : ClienteEntity, ICrud
     {
-        private char tipoPessoa;
-        
+        public int Id { get; set; }
         private string Nome { get; set; }
-
         private string Cpf { get; set; }
-
-        private bool MaiorDeIdade { get; set; }
-        
+        private bool maiorDeIdade;
         private int idade;
-        
         private int Idade
         {
             get { return idade; }
@@ -28,23 +22,15 @@ namespace Carteira
             {
                 if (idade >= 18)
                 {
-                    MaiorDeIdade = true;
+                    maiorDeIdade = true;
                 }
                 else
                 {
-                    MaiorDeIdade = false;
+                    maiorDeIdade = false;
                 }
                 idade = value;
             }
         }
-
-        public Pessoa()
-        {
-            Console.Clear();
-            CadastroPessoa();
-            MostrarPessoa();
-        }
-
         private void CadastroPessoa()
         {
             Console.Write("Digite seu nome: ");
@@ -69,6 +55,26 @@ namespace Carteira
 
             Console.Clear();
             Menu.MenuPrincipal();
+        }
+
+        public void Create()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Read()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete()
+        {
+            throw new NotImplementedException();
         }
     }
 }

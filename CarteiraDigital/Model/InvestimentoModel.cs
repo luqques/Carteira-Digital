@@ -1,39 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Carteira
+namespace Carteira.Model
 {
-    public class Investimento
+    public class InvestimentoModel : ICrud
     {
-        private string Tipo { get; set; }
-        private double Valor { get; set; }
-        private int Meses { get; set; }
-        
-        public Investimento()
-        {
-            Console.Clear();
-            TipoInvestimento();
-            ValorInvestimento();
-            MesesInvestimento();
-        }
-
         public void TipoInvestimento()
         {
             Console.WriteLine("Qual o tipo de investimento?");
-            Tipo = Console.ReadLine();
         }
         public void ValorInvestimento()
         {
             Console.WriteLine("Qual o valor do investimento?");
-            Valor = Convert.ToDouble(Console.ReadLine());
         }
         public void MesesInvestimento()
         {
             Console.WriteLine("Por quantos meses deseja deixar investido?");
-            Meses = Convert.ToInt32(Console.ReadLine());
+        }
+
+        public void Create()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Read()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete()
+        {
+            throw new NotImplementedException();
         }
     }
 }
