@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Carteira.Entity
 {
-    internal class ClienteEntity
+    public class ClienteEntity
     {
         public int Id { get; set; }        
         public string Documento { get; set; }

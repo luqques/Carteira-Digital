@@ -9,7 +9,7 @@ using Carteira.Entity;
 
 namespace Carteira.Model
 {
-    internal class ClienteModel : ICrud
+    public class ClienteModel : ICrud
     {
         string conectionString = "Server=localhost;Database=carteiradigital;User=root;Password=root;";
 
@@ -40,10 +40,10 @@ namespace Carteira.Model
             {
                 using (MySqlConnection con = new MySqlConnection(conectionString))
                 {
-                    IEnumerable<ClienteEntity> clientes = con.Query<ClienteEntity>("SELECT ID as Id, NOME as Nome FROM CLIENTE");
+                    IEnumerable<ClienteEntity> clientes = con.Query<ClienteEntity>("SELECT ID as Id, DOCUMENTO as Documento FROM CLIENTE");
                     foreach (ClienteEntity cliente in clientes)
                     {
-
+                        Mostrar(cliente);
                     }
                 }
             }
@@ -79,9 +79,9 @@ namespace Carteira.Model
                 throw new Exception("Quantidade de dígitos de documento inválido.");
             }
         }
-        private void Mostrar()
+        private void Mostrar(ClienteEntity cliente)
         {
-            Console.WriteLine($"{Id} - {Nome}");
+            Console.WriteLine($"{cliente.Id} - {cliente.Documento}");
         }
     }
 }
