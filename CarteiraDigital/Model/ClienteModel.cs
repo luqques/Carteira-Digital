@@ -19,9 +19,11 @@ namespace Carteira.Model
             Console.WriteLine("Digite o número do documento do Cliente");
             cliente.Documento = Console.ReadLine();
 
+            cliente.tipoCliente = DefinirTipoCliente(cliente.Documento);
+
             using (MySqlConnection connection = new MySqlConnection(conectionString))
             {
-                string sql = $"INSERT INTO CLIENTE VALUE (NULL, {cliente.Documento}, )";
+                string sql = $"INSERT INTO CLIENTE VALUE ({cliente.Documento}, {cliente.tipoCliente})";
                 int linhas = connection.Execute(sql, cliente);
                 Console.WriteLine($"Cliente inserido - {linhas} linhas inseridas");
             }
@@ -33,34 +35,17 @@ namespace Carteira.Model
         }
 
         public void Read()
-        {            
-            using (MySqlConnection con = new MySqlConnection(conectionString))
-            {
-                IEnumerable<ClienteEntity> clientes = con.Query<ClienteEntity>("SELECT ID as Id, NOME as Nome FROM CLIENTE");
-                foreach(ClienteEntity cliente in clientes)
-                {
-                    cliente.Mostrar();
-                }
-            }
-        }
-
-        public void ReadModoRuim()
         {
             try
             {
-                MySqlConnection conection = new MySqlConnection(conectionString);
-                conection.Open();
-                string commandSql = "SELECT * FROM CLIENTE";
-                MySqlCommand command = new MySqlCommand(commandSql, conection);
-                using (MySqlDataReader reader = command.ExecuteReader())
+                using (MySqlConnection con = new MySqlConnection(conectionString))
                 {
-                    Console.WriteLine("Conectado");
-                    while (reader.Read())
+                    IEnumerable<ClienteEntity> clientes = con.Query<ClienteEntity>("SELECT ID as Id, NOME as Nome FROM CLIENTE");
+                    foreach (ClienteEntity cliente in clientes)
                     {
-                        Console.WriteLine($"{reader["ID"]} - {reader["NOME"]} | {reader["DOCUMENTO"]} | {reader["TIPO_CLIENTE"]}");
+
                     }
                 }
-                
             }
             catch (MySqlException ex)
             {
@@ -79,19 +64,19 @@ namespace Carteira.Model
             throw new NotImplementedException();
         }
 
-        public void DefinirTipoCliente()
-        {
-            Console.Clear();
-            Console.Write("Digite o número identificador do seu documento: ");
-             = Console.ReadLine();
-
-            if (tipoCliente == 'J')
+        private char DefinirTipoCliente(string documento)
+        {                      
+            if (documento.Length == 14)
             {
-                Empresa empresa1 = new Empresa();
+                return 'J';
             }
-            else if (tipoCliente == 'F')
+            else if (documento.Length == 11)
             {
-                Pessoa pessoa1 = new Pessoa();
+                return 'F';
+            }
+            else
+            {
+                throw new Exception("Quantidade de dígitos de documento inválido.");
             }
         }
         private void Mostrar()
