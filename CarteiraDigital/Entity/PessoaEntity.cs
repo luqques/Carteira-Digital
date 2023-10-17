@@ -1,5 +1,4 @@
 ﻿using Carteira.Helpers;
-using Carteira.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

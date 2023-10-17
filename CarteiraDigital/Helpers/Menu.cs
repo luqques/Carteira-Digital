@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Carteira.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,7 +32,7 @@ namespace Carteira.Helpers
                 switch (Convert.ToInt32(Console.ReadLine()))
                 {
                     case 1:
-                        //TODO: Chamar cadastro de Cliente
+                        ClienteModel clienteModel = new();
                         break;
                     case 2:
                         //TODO: Chamar consulta de Saldo
