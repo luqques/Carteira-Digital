@@ -8,9 +8,28 @@ namespace Carteira.Entity
 {
     internal class ClienteEntity
     {
-        public int ID { get; set; }
-        public string NOME { get; set; }
-        public string DOCUMENTO { get; set; }
-        public string TIPO_DOCUMENTO { get; set; }
+        private static string documento;
+        private static char tipoCliente;
+
+        public static string Documento
+        {
+            get { return documento; }
+            set
+            {
+                documento = value;
+                if (documento.Length == 14)
+                {
+                    tipoCliente = 'J';
+                }
+                else if (documento.Length == 11)
+                {
+                    tipoCliente = 'F';
+                }
+                else
+                {
+                    throw new ArgumentException("Documento inválido.");
+                }
+            }
+        }
     }
 }

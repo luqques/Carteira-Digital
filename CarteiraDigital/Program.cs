@@ -11,7 +11,15 @@ class Program
         try
         {
             ClienteModel clienteModel = new ClienteModel();
+
             clienteModel.Read();
+            Console.WriteLine();
+
+            clienteModel.Create();
+            Console.WriteLine();
+
+            clienteModel.Read();
+            Console.WriteLine();
 
             Menu.BoasVindas();
             Menu.MenuPrincipal();
