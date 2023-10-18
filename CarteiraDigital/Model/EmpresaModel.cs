@@ -1,5 +1,6 @@
 ﻿using Carteira.Entity;
 using Carteira.Helpers;
+using Carteira.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

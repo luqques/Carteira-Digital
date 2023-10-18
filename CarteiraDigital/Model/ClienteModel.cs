@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Carteira.Entity;
-using Carteira.Helpers;
+using Carteira.Interfaces;
 
 namespace Carteira.Model
 {
