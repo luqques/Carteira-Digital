@@ -1,14 +1,58 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Carteira.Entity;
+using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZstdSharp.Unsafe;
 
 namespace Carteira.Helpers
 {
     public class Login : Database
     {
+        private Login _login = new();
+
+        public ClienteEntity GetByDocumento(string documento)
+        {
+            _login.connectionString = base.connectionString;
+
+            if (DocumentoExiste(documento, _login.connectionString))
+            {
+                //TODO: Buscar o cliente na base de dados.
+            }
+            else if (documento == null)
+            {
+                throw new ArgumentNullException();
+            }
+            else
+            {
+                return new ClienteEntity();
+            }
+        }
+
+        private bool DocumentoExiste(string documento, string connectionString)
+        {
+            bool isDocumentoExistente = false;
+
+            string sql = $"SELECT * FROM CLIENTE WHERE DOCUMENTO LIKE '{documento}'";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                MySqlCommand command = new MySqlCommand(sql, connection);
+                connection.Open();
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        isDocumentoExistente = true;
+                    }
+                }
+            }
+            return isDocumentoExistente;
+        }
+
         public static void RealizarLogin()
         {
             //TODO: Usar a classe Database para conexão com o Banco.
@@ -21,7 +65,7 @@ namespace Carteira.Helpers
 
             string sql = $"SELECT * FROM CLIENTE WHERE DOCUMENTO LIKE '{documento}'";
 
-            using (MySqlConnection connection = new MySqlConnection(conectionString))
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 MySqlCommand command = new MySqlCommand(sql, connection);
                 connection.Open();
