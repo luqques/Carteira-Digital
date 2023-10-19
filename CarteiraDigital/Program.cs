@@ -9,13 +9,8 @@ class Program
     static void Main(string[] args)
     {
         try
-        {
-            //ClienteModel clienteModel = new ClienteModel();
-
-            //clienteModel.Read();
-
-
-            Menu.BoasVindas();
+        {            
+            Menu.Login();
             Menu.MenuPrincipal();
         }
         catch (FormatException)
