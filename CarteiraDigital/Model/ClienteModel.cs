@@ -12,7 +12,7 @@ namespace Carteira.Model
 {
     public class ClienteModel : ICrud
     {
-        string conectionString = "Server=localhost;Database=carteiradigital;User=root;Password=root;";
+        string conectionString = "Server=localhost;Database=carteiradigital;User=root;Password=root;";        
 
         public void Create()
         {

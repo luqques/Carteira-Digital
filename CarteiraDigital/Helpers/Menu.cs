@@ -1,4 +1,8 @@
-﻿using Carteira.Model;
+﻿using Carteira.Entity;
+using Carteira.Model;
+using Dapper;
+using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +13,54 @@ namespace Carteira.Helpers
 {
     public class Menu
     {
-        public static void BoasVindas()
+        public static void Login()
         {
-            Console.WriteLine("\nBem vindo à sua Carteira Digital!");
+            string conectionString = "Server = localhost; Database = carteiradigital; User = root; Password = root;";
+
+            Console.Write("Bem vindo à sua Carteira Digital! \n\nDigite seu documento (CPF/CNPJ): ");
+            string documento = Console.ReadLine();
+            bool isDocumentoExistente = false;
+
+            string sql = $"SELECT * FROM CLIENTE WHERE DOCUMENTO LIKE '{documento}'";
+            using (MySqlConnection connection = new MySqlConnection(conectionString))
+            {
+                MySqlCommand command = new MySqlCommand(sql, connection);
+                connection.Open();
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        isDocumentoExistente = true;
+                        Console.WriteLine(String.Format("{0}, {1}", reader[0], reader[1]));
+                    }
+                }
+
+                if (isDocumentoExistente == true)
+                {
+                    Console.WriteLine("Existe");
+                }
+                else
+                {
+                    Console.WriteLine("Não existe");
+                }
+            }
+
+            if (Convert.ToChar(Console.ReadLine().ToLower()) == 's')
+            {
+                Console.Clear();
+                
+            }
+            else if (Convert.ToChar(Console.ReadLine().ToLower()) == 'n')
+            {
+                Console.Clear();
+                //TODO: Realizar Cadastro
+            }
+            else
+            {
+                throw new FormatException("Resposta inválida!");
+            }
         }
+
         public static void MenuPrincipal()
         {
             Console.WriteLine("1. Carteira");
@@ -33,6 +81,7 @@ namespace Carteira.Helpers
                 {
                     case 1:
                         ClienteModel clienteModel = new();
+                        clienteModel.Read();
                         break;
                     case 2:
                         //TODO: Chamar consulta de Saldo
