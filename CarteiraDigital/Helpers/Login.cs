@@ -1,4 +1,6 @@
 ﻿using Carteira.Entity;
+using Carteira.Model;
+using Dapper;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
 using System;
@@ -12,27 +14,21 @@ namespace Carteira.Helpers
 {
     public class Login : Database
     {
-        private Login _login = new();
+        private static Login _login = new();
 
-        public ClienteEntity GetByDocumento(string documento)
+        private ClienteEntity GetByDocumento(string documento)
         {
             _login.connectionString = base.connectionString;
 
-            if (DocumentoExiste(documento, _login.connectionString))
+            using (MySqlConnection con = new MySqlConnection(_login.connectionString))
             {
-                //TODO: Buscar o cliente na base de dados.
-            }
-            else if (documento == null)
-            {
-                throw new ArgumentNullException();
-            }
-            else
-            {
-                return new ClienteEntity();
+                string sql = $"SELECT * FROM CLIENTE WHERE DOCUMENTO LIKE '{documento}'";
+                var parameters = new { Documento = documento };
+                return con.QueryFirst<ClienteEntity>(sql, parameters);
             }
         }
 
-        private bool DocumentoExiste(string documento, string connectionString)
+        private static bool DocumentoExiste(string documento, string connectionString)
         {
             bool isDocumentoExistente = false;
 
@@ -55,47 +51,33 @@ namespace Carteira.Helpers
 
         public static void RealizarLogin()
         {
-            //TODO: Usar a classe Database para conexão com o Banco.
-
-            string conectionString = "Server = localhost; Database = carteiradigital; User = root; Password = root;";
+            Login login = new Login();
 
             Console.Write("Bem vindo à sua Carteira Digital! \n\nDigite seu documento (CPF/CNPJ): ");
             string documento = Console.ReadLine();
-            bool isDocumentoExistente = false;
 
-            string sql = $"SELECT * FROM CLIENTE WHERE DOCUMENTO LIKE '{documento}'";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            if (DocumentoExiste(documento, _login.connectionString))
+            {                
+                ClienteModel clienteExistente = new ClienteModel();
+                login.GetByDocumento(documento);
+                clienteExistente.Read();
+            }
+            else
             {
-                MySqlCommand command = new MySqlCommand(sql, connection);
-                connection.Open();
-                using (MySqlDataReader reader = command.ExecuteReader())
+                Console.WriteLine("Conta não existente, deseja realizar o cadastro? s/n");
+                if (Convert.ToChar(Console.ReadLine().ToLower()) == 's')
                 {
-                    if (reader.Read())
-                    {
-                        isDocumentoExistente = true;
-                    }
+                    ClienteModel clienteNovo = new();
+                    clienteNovo.Create();
                 }
-
-                if (isDocumentoExistente == true)
+                else if (Convert.ToChar(Console.ReadLine().ToLower()) == 'n')
                 {
-                    //TODO: Pedir a senha.
+                    Console.Clear();
+                    Console.WriteLine("Volte sempre!");
                 }
                 else
                 {
-                    Console.WriteLine("Conta não existente, deseja realizar o cadastro? s/n");
-                    if (Convert.ToChar(Console.ReadLine().ToLower()) == 's')
-                    {
-                        //TODO: Realizar o cadastro.
-                    }
-                    else if (Convert.ToChar(Console.ReadLine().ToLower()) == 'n')
-                    {
-                        //TODO: Voltar ao Login.
-                    }
-                    else
-                    {
-                        throw new FormatException("Caractere inválido.");
-                    }
+                    throw new FormatException("Caractere inválido.");
                 }
             }
 
