@@ -24,24 +24,19 @@ namespace Carteira.Helpers
             Console.Clear();
             if (opcao == 1)
             {
-                Console.WriteLine("1. Cadastro");
-                Console.WriteLine("2. Saldo");
-                Console.WriteLine("3. Investimentos");
-                Console.WriteLine("4. Pagamentos");
+                Console.WriteLine("1. Saldo");
+                Console.WriteLine("2. Investimentos");
+                Console.WriteLine("3. Pagamentos");
 
                 switch (Convert.ToInt32(Console.ReadLine()))
                 {
                     case 1:
-                        ClienteModel clienteModel = new();
-                        clienteModel.Read();
-                        break;
-                    case 2:
                         //TODO: Chamar consulta de Saldo
                         break;
-                    case 3:
+                    case 2:
                         //TODO: Chamar Carteira de Investimentos
                         break;
-                    case 4:
+                    case 3:
                         //TODO: Chamar cadastro de Pagamento
                         break;
                     default:

@@ -7,13 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Carteira.Entity;
 using Carteira.Interfaces;
+using Carteira.Helpers;
 
 namespace Carteira.Model
 {
     public class ClienteModel : ICrud
     {
-        string conectionString = "Server=localhost;Database=carteiradigital;User=root;Password=root;";        
-
+        protected string connectionString = "Server = localhost; Database = carteiradigital; User = root; Password = root;";
         public void Create()
         {
             ClienteEntity cliente = new ClienteEntity();
@@ -22,7 +22,7 @@ namespace Carteira.Model
 
             cliente.tipoCliente = DefinirTipoCliente(cliente.Documento);
 
-            using (MySqlConnection connection = new MySqlConnection(conectionString))
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 string sql = $"INSERT INTO CLIENTE VALUE ({cliente.Documento}, {cliente.tipoCliente})";
                 int linhas = connection.Execute(sql, cliente);
@@ -39,9 +39,9 @@ namespace Carteira.Model
         {
             try
             {
-                using (MySqlConnection con = new MySqlConnection(conectionString))
+                using (MySqlConnection con = new MySqlConnection(connectionString))
                 {
-                    IEnumerable<ClienteEntity> clientes = con.Query<ClienteEntity>("SELECT ID as Id, DOCUMENTO as Documento FROM CLIENTE");
+                    IEnumerable<ClienteEntity> clientes = con.Query<ClienteEntity>($"SELECT ID as Id, DOCUMENTO as Documento FROM CLIENTE");
                     foreach (ClienteEntity cliente in clientes)
                     {
                         Mostrar(cliente);
@@ -80,7 +80,7 @@ namespace Carteira.Model
                 throw new Exception("Quantidade de dígitos de documento inválido.");
             }
         }
-        private void Mostrar(ClienteEntity cliente)
+        public void Mostrar(ClienteEntity cliente)
         {
             Console.WriteLine($"{cliente.Id} - {cliente.Documento}");
         }

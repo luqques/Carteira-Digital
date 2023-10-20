@@ -16,7 +16,7 @@ namespace Carteira.Helpers
     {
         private static Login _login = new();
 
-        private ClienteEntity GetByDocumento(string documento)
+        public ClienteEntity GetByDocumento(string documento) //jogar isso no ClienteModel (?)
         {
             _login.connectionString = base.connectionString;
 
@@ -57,10 +57,19 @@ namespace Carteira.Helpers
             string documento = Console.ReadLine();
 
             if (DocumentoExiste(documento, _login.connectionString))
-            {                
+            {
                 ClienteModel clienteExistente = new ClienteModel();
-                login.GetByDocumento(documento);
-                clienteExistente.Read();
+                //clienteExistente.Mostrar(login.GetByDocumento(documento));
+                if (InserirSenha(login.GetByDocumento(documento)))
+                {
+                    Console.WriteLine("Entrou");
+                    Console.ReadLine();
+                }
+                else
+                {
+                    Console.WriteLine("Não entrou!");
+                    Console.ReadLine();
+                }
             }
             else
             {
@@ -80,21 +89,17 @@ namespace Carteira.Helpers
                     throw new FormatException("Caractere inválido.");
                 }
             }
+        }
+        private static bool InserirSenha(ClienteEntity cliente)
+        {
+            Console.Write("Senha: ");
+            string senha = Console.ReadLine();
 
-            if (Convert.ToChar(Console.ReadLine().ToLower()) == 's')
+            if (senha == cliente.Senha)
             {
-                Console.Clear();
-
+                return true;
             }
-            else if (Convert.ToChar(Console.ReadLine().ToLower()) == 'n')
-            {
-                Console.Clear();
-                //TODO: Realizar Cadastro
-            }
-            else
-            {
-                throw new FormatException("Resposta inválida!");
-            }
+            return false;
         }
     }
 }
