@@ -1,19 +1,20 @@
-﻿using System;
+﻿using Carteira.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Carteira
+namespace Carteira.Entity
 {
-    public class Endereco
+    public class EnderecoEntity
     {
         public string Cep { get; set; }
         public string Rua { get; set; }
         public int Numero { get; set; }
         public string Complemento { get; set; }
 
-        public Carteira.Estado estado;
-        public Carteira.Cidade cidade;
+        public EstadoEntity estado;
+        public CidadeEntity cidade;
     }
 }

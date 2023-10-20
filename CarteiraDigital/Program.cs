@@ -1,4 +1,5 @@
-﻿using Carteira;
+﻿using Carteira.Helpers;
+using Carteira.Model;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Carteira;
@@ -8,8 +9,8 @@ class Program
     static void Main(string[] args)
     {
         try
-        {
-            Menu.BoasVindas();
+        {            
+            Login.RealizarLogin();
             Menu.MenuPrincipal();
         }
         catch (FormatException)
