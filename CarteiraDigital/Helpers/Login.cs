@@ -4,7 +4,9 @@ using Dapper;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,16 +62,7 @@ namespace Carteira.Helpers
             {
                 ClienteModel clienteExistente = new ClienteModel();
                 //clienteExistente.Mostrar(login.GetByDocumento(documento));
-                if (InserirSenha(login.GetByDocumento(documento)))
-                {
-                    Console.WriteLine("Entrou");
-                    Console.ReadLine();
-                }
-                else
-                {
-                    Console.WriteLine("Não entrou!");
-                    Console.ReadLine();
-                }
+                InserirSenha(_login.GetByDocumento(documento));
             }
             else
             {
@@ -90,16 +83,38 @@ namespace Carteira.Helpers
                 }
             }
         }
-        private static bool InserirSenha(ClienteEntity cliente)
+        private static void InserirSenha(ClienteEntity cliente)
         {
-            Console.Write("Senha: ");
-            string senha = Console.ReadLine();
-
-            if (senha == cliente.Senha)
+            using (MySqlConnection connection = new MySqlConnection(_login.connectionString))
             {
-                return true;
+                connection.Open();
+
+                string sql = $"SELECT * FROM CLIENTE WHERE DOCUMENTO LIKE '{cliente.Documento}'";
+
+                using (MySqlCommand command = new MySqlCommand(sql, connection))
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string senha = reader["SENHA"].ToString();
+                            if (senha == Console.ReadLine())
+                            {
+                                Console.WriteLine("Bem vindo à sua conta!");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Senha incorreta! Tente novamente.");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Documento não cadastrado!");
+                        }
+                    }
+                }
+
             }
-            return false;
         }
     }
 }
