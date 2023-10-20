@@ -10,7 +10,7 @@ namespace Carteira.Entity
     {
         public int Id { get; set; }        
         public string Documento { get; set; }
-        
         public char tipoCliente;
+        public string Senha { get; set; }
     }
 }

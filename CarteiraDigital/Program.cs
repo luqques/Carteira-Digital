@@ -10,7 +10,7 @@ class Program
     {
         try
         {            
-            Menu.Login();
+            Login.RealizarLogin();
             Menu.MenuPrincipal();
         }
         catch (FormatException)
